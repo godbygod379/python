@@ -8,3 +8,4 @@ if trzby > naklady:
     print(f"you made a profit of {trzby - naklady}")
 elif naklady > trzby:
     print(f"you made a loss of {naklady - trzby}")
+else:    print("you are even")
