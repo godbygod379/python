@@ -1,7 +1,7 @@
 item = input("Enter the number id of the item you want to buy: ")
 amount = int(input("Enter the amount you want to buy: "))
 price = 0
-if item == "0":\
+if item == "0":
     price = 51*amount
 elif item == "1":
     price = 30*amount
