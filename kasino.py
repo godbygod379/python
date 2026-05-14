@@ -12,7 +12,7 @@ while  go == 1:
     else:
         choose = input("Choose a number between 0 and 10: ")
         print("Bet placed.")
-        money = money - bet
+        money -= bet
         print("Spinning the wheel...")
         result = random.randint(0, 10)
     if result == choose:
