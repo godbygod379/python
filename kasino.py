@@ -25,6 +25,7 @@ while  go == 1:
         print("You have no more money to play with. Game over.")
         go = 0
     else:
+        print(f"You have {money} dollars left.")
         go = int(input("Do you want to play again? (1 for yes, 0 for no) "))
 if money > 0:
      print(f"your balance is {money}")
