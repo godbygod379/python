@@ -22,7 +22,10 @@ while  go == 1:
         print("Sorry, you lost.")
         lost = lost + bet
         money = money - bet
+    if money == 0:
+        print("You have no more money to play with. Game over.")
+    else:
     go = int(input("Do you want to play again? (1 for yes, 0 for no) "))
 if money > 0:
      print(f"your balance is {money}")
-print(f"You have {money} left.")
+print(f"You have {money} left and you lost {lost} dollars.")
