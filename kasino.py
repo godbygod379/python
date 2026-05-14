@@ -17,11 +17,11 @@ while  go == 1:
         result = random.randint(0, 10)
     if result == choose:
         print("Congratulations! You won!")
-        money = money + bet * 2
+        money += bet * 2
     else:
         print("Sorry, you lost.")
-        lost = lost + bet
-        money = money - bet
+        lost += bet
+        money -= bet
     if money == 0:
         print("You have no more money to play with. Game over.")
     else:
