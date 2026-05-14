@@ -10,11 +10,11 @@ while  go == 1:
     if bet > money:
         print("You don't have enough money to place that bet.")
     else:
-        choose = input("Choose a number between 0 and 5:")
+        choose = int(input("Choose a number between 0 and 3: "))
         print("Bet placed.")
         money -= bet
         print("Spinning the wheel...")
-        result = random.randint(0, 5)
+        result = random.randint(0, 3)
     if result == choose:
         print("Congratulations! You won!")
         money += bet * 2
