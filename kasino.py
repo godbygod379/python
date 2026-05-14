@@ -21,7 +21,6 @@ while  go == 1:
     else:
         print("Sorry, you lost.")
         lost += bet
-        money -= bet
     if money == 0:
         print("You have no more money to play with. Game over.")
     else:
