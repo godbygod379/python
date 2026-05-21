@@ -1,4 +1,5 @@
 import random
+import time
 
 
 pos = 1
@@ -28,7 +29,8 @@ while pos != 100:
         pos = 28
     elif pos == 98:
         pos = 61
-    wait(5)
+    
+    time.sleep(2)
 
     print(f"Si na policku {pos}, hodil si cislo {die}")
 
