@@ -6,4 +6,4 @@ for delitel in range(1, n + 1):
         spolu += delitel
         pocet += 1
         print(delitel)
-print(f"Počet dělitelů čísla {n}: {spolu}")
+print(f"Počet delitelov čísla {n}: {spolu}")
