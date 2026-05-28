@@ -8,3 +8,4 @@ for i in range (1, x, 2):
         h += 1
     print(" " * m + "#" +"-" * i + "#")
     m -= 1
+print(" " * m + "#" * (x + 3))
