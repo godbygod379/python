@@ -3,7 +3,7 @@ import random
 
 c = tkinter.Canvas(width=1920, height=1080)
 c.pack()
-for i in range(100):
+for i in range(1000000):
     x = random.randint(0, 1920)
     y = random.randint(0, 1080)
     sirka = random.randint(20, 100)
@@ -14,7 +14,7 @@ for i in range(100):
     color = f"#{r:02x}{g:02x}{b:02x}"
     c.create_rectangle(x, y, x + sirka, y + vyska, outline=color, fill=color)  
 
-    c.after(100)
+    c.after(1)
     c.update()
 
 
