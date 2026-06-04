@@ -26,20 +26,41 @@ c.mainloop()
 
 import tkinter
 import random
+from turtle import width
 
+x_krok = 5
+y_krok = 5
 
-x = 0
-y = 0
+x = 500
+y = 250
 
-c = tkinter.Canvas(width=1920, height=1080)
+c = tkinter.Canvas(width=1000, height=500)
 c.pack()
 
 for i in range(1000000):
     c.delete("all")
     c.create_rectangle(x, y, x + 50, y + 50, fill = "black", outline = "black")
 
-    x += 1
-    y += 1
+
+    
+    x += x_krok
+    y += y_krok
+
+    if x <= 0:
+        x_krok = 5
+        x += 5
+
+    if y <= 0:
+        y_krok = 5
+        y += 5
+
+    if x + 50 >= 1000:
+        x_krok = -5
+        x -= 5
+
+    if y + 50 >= 500:
+        y_krok = -5
+        y -= 5
 
     c.after(1)
     c.update()
