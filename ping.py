@@ -16,6 +16,9 @@ class PingPongGame:
         self.ball_dy = 3
         self.paddle_speed = 30
         self.ai_speed = 5
+        self.ai_paused = False
+        self.ai_pause_duration = 1000  # milliseconds
+        self.ai_pause_chance_per_second = 0.1  # approx chance to pause per second
 
         self.menu_frame = tk.Frame(root, padx=20, pady=20)
         self.menu_frame.pack(fill="both", expand=True)
@@ -143,6 +146,19 @@ class PingPongGame:
         self.ball_dy = random.choice([-3, 3])
 
     def move_ai_paddle(self):
+        # If AI is temporarily paused, skip movement
+        if self.ai_paused:
+            return
+
+        # Small chance to pause the AI for a short duration to simulate hesitation
+        # move_ball is called roughly every 30ms, so convert per-second chance to per-tick
+        tick_interval_ms = 30
+        p_tick = self.ai_pause_chance_per_second * (tick_interval_ms / 1000.0)
+        if random.random() < p_tick:
+            self.ai_paused = True
+            self.root.after(self.ai_pause_duration, self.resume_ai)
+            return
+
         px1, py1, px2, py2 = self.canvas.coords(self.right_paddle)
         bx1, by1, bx2, by2 = self.canvas.coords(self.ball)
         paddle_center = (py1 + py2) / 2
@@ -151,6 +167,9 @@ class PingPongGame:
             self.move_paddle(self.right_paddle, self.ai_speed)
         elif ball_center < paddle_center - 10:
             self.move_paddle(self.right_paddle, -self.ai_speed)
+
+    def resume_ai(self):
+        self.ai_paused = False
 
     def check_collision(self, paddle, ball_coords):
         px1, py1, px2, py2 = self.canvas.coords(paddle)
