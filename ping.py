@@ -19,6 +19,7 @@ class PingPongGame:
         self.ai_paused = False
         self.ai_pause_duration = 1000  # milliseconds
         self.ai_pause_chance_per_second = 0.1  # approx chance to pause per second
+        self.player_point_chance_per_second = 0.03  # chance per second to award player a point
 
         self.menu_frame = tk.Frame(root, padx=20, pady=20)
         self.menu_frame.pack(fill="both", expand=True)
@@ -136,7 +137,15 @@ class PingPongGame:
                 self.ball_dx = -self.ball_dx
 
         if self.mode == "singleplayer":
-            self.move_ai_paddle()
+            # Occasionally award the human player a point to simulate AI mistakes/luck
+            tick_interval_ms = 30
+            p_tick = self.player_point_chance_per_second * (tick_interval_ms / 1000.0)
+            if random.random() < p_tick:
+                self.score_left += 1
+                self.update_score_labels()
+                self.reset_ball()
+            else:
+                self.move_ai_paddle()
 
         self.root.after(30, self.move_ball)
 
